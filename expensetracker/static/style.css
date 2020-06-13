@@ -1,0 +1,71 @@
+body{
+    font-family: 'Nunito',sans-serif;
+    background: #bc4e9c;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #f80759, #bc4e9c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+ul{
+    list-style: none;
+    margin: 0;
+    padding:0;
+}
+
+li{
+    background:#2F4F4F;
+    margin:2px;
+    padding:3px;
+}
+li:nth-child(2n){
+    background: #32578B;
+    margin:2px;
+    padding:3px;
+}
+
+#trash {
+    margin-right: 10px;
+    text-align: center;
+    width: 0;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity:0
+}
+
+li:hover #trash{
+    width:20px;
+    opacity: 0.9;
+}
+
+.listtext {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.inputview{
+    display: none;
+     transition: linear;
+ }
+ 
+
+ #income{
+     color:#18d17b;
+ }
+
+
+ #exp{
+     color:#FF0000;
+ }
+
+ .plussign{
+    background:#18d17b;
+    color:#18d17b;
+    background-clip: content-box;
+    
+    
+ }
+ .minussign{
+     color: #FF0000;
+     background: #FF0000;
+     background-clip: content-box;
+
+ }
