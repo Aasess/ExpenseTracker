@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--custom css-->
     <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <title>Document</title>
+    <title>Expense Tracker</title>
 </head>
 <body>
    <div class="container mt-5 mb-5 bg-dark text-white w-50">
@@ -37,10 +37,13 @@
        <br/>
        
        <div class="row">
-           <div class="col-12 text-left">
+           <div class="col-8 text-left">
                <h4>History</h4>
-               <hr color="white"/>
            </div>
+           <div class="col-4 text-right">
+            <a href="{% url 'history' %}" title="view all history"><i class="fa fa-history mr-2" style="font-size:24px;"></i></a>
+           </div>
+           <hr color="white"/>
        </div>
 
        <table class="table table-borderless table-dark table-hover table-sm">
@@ -57,7 +60,7 @@
           <tr>
             <td> {{ transaction.datepretty }}</td>
             <td>{{ transaction.transaction_name }}</td>
-            <td>{{ transaction.amount }}</td>
+            <td class="text-left">{{ transaction.amount }}</td>
             <div><td class="text-right">{{ transaction.sign }}</td></div>
           </tr>
           {% endfor %}
@@ -120,17 +123,3 @@
 </body>
 </html>
 
-
-
-<!--
-     <div class="row no-gutters">
-            <div class=" col-8">
-                <ul>
-                    {% for transaction in expense.all %}
-                        <li><span id="trash"><i class="fa fa-trash"></i></span>{{ transaction.transaction_name }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            
-       </div>
--->

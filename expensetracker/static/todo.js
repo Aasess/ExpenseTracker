@@ -5,8 +5,8 @@ $("tr").on('click','td',function(){
 
 
 //when span(delete icon) is pressed delete the list
-$('ul').on('click','span',function(e){
-    $(this).parent().fadeOut(500,function(){
+$('.trash').on('click',function(e){
+    $(this).parent().parent().fadeOut(500,function(){
         $(this).remove();
     });
     e.stopPropagation();
@@ -31,13 +31,6 @@ setTimeout(function(){
 
 
 //sign coloring manager
-// var data = $("td.text-right").text() //storing all sign to data
-// for(var i =0;i<data.length;i++){
-//     if(data[i]=='+'){
-//         data
-//     }
-// }
-
 $("td.text-right").each(function (index,element){
     if($(this).text() == '+')
     {
@@ -49,3 +42,5 @@ $("td.text-right").each(function (index,element){
         $(this).addClass("minussign");
     }
 });
+
+//balance green for more income and red for expense 

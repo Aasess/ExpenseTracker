@@ -5,25 +5,9 @@ body{
     background: linear-gradient(to left, #f80759, #bc4e9c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 }
-ul{
-    list-style: none;
-    margin: 0;
-    padding:0;
-}
 
-li{
-    background:#2F4F4F;
-    margin:2px;
-    padding:3px;
-}
-li:nth-child(2n){
-    background: #32578B;
-    margin:2px;
-    padding:3px;
-}
-
-#trash {
-    margin-right: 10px;
+.trash {
+    margin-right: 0px;
     text-align: center;
     width: 0;
     display: inline-block;
@@ -31,7 +15,7 @@ li:nth-child(2n){
     opacity:0
 }
 
-li:hover #trash{
+tr:hover .trash{
     width:20px;
     opacity: 0.9;
 }
@@ -61,11 +45,14 @@ li:hover #trash{
     color:#18d17b;
     background-clip: content-box;
     
-    
  }
  .minussign{
-     color: #FF0000;
-     background: #FF0000;
+     color: #B22222;
+     background: #B22222;
      background-clip: content-box;
 
  }
+
+a{
+    color: white;
+}

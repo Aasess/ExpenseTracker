@@ -25,14 +25,18 @@ def home(request):
         else:
             return render(request,'expense\home.html',{
                 "error":"Missing Field !! Add New Transaction ",
-                "expense":Expense.objects.order_by("-date"),
+                "expense":Expense.objects.order_by("-date")[:6],
                 "income":sumincome,
                 "exp":sumexpense,
                 "balance":balance
                 })
     else:       
         return render(request,'expense\home.html',{
-            "expense":Expense.objects.order_by("-date"),
+            "expense":Expense.objects.order_by("-date")[:6],
             "income":sumincome,
             "exp":sumexpense,
             "balance":balance})
+
+
+def history(request):
+    return render(request,'expense\history.html',{"expense":Expense.objects.order_by("-date")})

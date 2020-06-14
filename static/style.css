@@ -58,7 +58,17 @@ li:hover #trash{
 
  .plussign{
     background:#18d17b;
+    color:#18d17b;
+    background-clip: content-box;
+    
  }
  .minussign{
-     background: #FF0000;
+     color: #B22222;
+     background: #B22222;
+     background-clip: content-box;
+
  }
+
+a{
+    color: white;
+}

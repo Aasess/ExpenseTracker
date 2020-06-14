@@ -31,19 +31,16 @@ setTimeout(function(){
 
 
 //sign coloring manager
-// var data = $("td.text-right").text() //storing all sign to data
-// for(var i =0;i<data.length;i++){
-//     if(data[i]=='+'){
-//         data
-//     }
-// }
-
 $("td.text-right").each(function (index,element){
     if($(this).text() == '+')
     {
+        $(this).text("");
         $(this).addClass("plussign");
     }
     if($(this).text() == '-'){
+        $(this).text("");
         $(this).addClass("minussign");
     }
 });
+
+//balance green for more income and red for expense 
