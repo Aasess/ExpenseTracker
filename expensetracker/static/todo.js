@@ -1,6 +1,6 @@
 $(document).ready(function () {
     //for adding line-through  
-    $("tr").on('click','td',function(){
+    $("tr").on('click','td',function(e){
         $(this).parent().toggleClass("listtext");
     });
 
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
 
     //sign coloring manager
-    $("td.text-right").each(function (index,element){
+    $("td.sign").each(function (index,element){
         if($(this).text() == '+')
         {
             $(this).text("");

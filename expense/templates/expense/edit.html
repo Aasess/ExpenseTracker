@@ -10,14 +10,16 @@
 </nav>
 <div class="container text-white pt-1">
     <h4 class="alert alert-primary"><strong>Edit Transaction</strong></h4>
-    <div class="row fademessage ">
+    <hr color="white"/>
+    {% if error %}
+    <div class="row fademessage">
         <div class="col-5 mx-auto">
-            {% if error %}
                 <div class="alert alert-warning text-center" role="alert"><strong>{{ error }}</strong></div>
-            {% endif %}
         </div>
     </div>
-    <div class="col-5 mx-auto border border-dark rounded m-3 p-3 text-center">
+    {% endif %}
+    <br/>
+    <div class="col-5 mx-auto border border-dark rounded m-3 p-3 text-center bg-dark">
         <form method="POST" action="{% url 'edit' transaction.id %}">
             {% csrf_token %}
             <div class="form-group">
@@ -28,7 +30,7 @@
                 <label><strong>Amount</strong></label>
                 <input type="text" class="form-control" placeholder ="enter your amount" name="amount" value="{{ transaction.amount }}"/>
             </div>
-            <hr/>
+            <hr color="white"/>
             <button type="submit" class="btn btn-success form-control">Submit</button>
         </form>
     </div>

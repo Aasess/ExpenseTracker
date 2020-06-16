@@ -29,12 +29,12 @@
           </thead>
           <tbody>
               {% for transaction in expense.all %}
-            <tr>
+            <tr/>
               <td><span class="trash"><i class="fa fa-trash" title="Delete this transaction"></i></span> {{ transaction.datepretty }}</td>
               <td>{{ transaction.transaction_name }}</td>
               <td class="text-left">{{ transaction.amount }}</td>
               <td><a href="{% url 'edit' transaction.id %}" title="Edit this transaction" class="ml-3 mr-4"><i class="fa fa-edit"></i></a></td>
-              <div><td class="text-right">{{ transaction.sign }}</td></div>
+              <div><td class="text-right sign">{{ transaction.sign }}</td></div>
             </tr>
             {% endfor %}
           </tbody>
