@@ -40,3 +40,7 @@ def home(request):
 
 def history(request):
     return render(request,'expense\history.html',{"expense":Expense.objects.order_by("-date")})
+
+
+def edit(request,transaction_id):
+    return render(request,'expense\edit.html')
