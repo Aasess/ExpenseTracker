@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Expense
 
 # Create your views here.
@@ -43,4 +43,18 @@ def history(request):
 
 
 def edit(request,transaction_id):
-    return render(request,'expense\edit.html')
+    transaction = get_object_or_404(Expense,pk=transaction_id)
+    if(request.method=="POST"):
+        #submit data
+        if(request.POST["transactionname"] and request.POST["amount"]):
+            print(transaction.transaction_name)
+            transaction.transaction_name = request.POST["transactionname"]
+            transaction.amount = request.POST["amount"]
+            print(transaction.transaction_name)
+            transaction.save()
+            return redirect("history")
+        else:
+            return render(request,'expense\edit.html',{"transaction":transaction,"error":"Missing Fields!!!"})
+
+    else:
+        return render(request,'expense\edit.html',{"transaction":transaction })
