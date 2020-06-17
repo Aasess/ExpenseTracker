@@ -1,48 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <!--jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
-    <!-- CSS only -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <!--fontawesome cdn-->
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <!--google font-->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--custom css-->
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <title>Document</title>
-</head>
-<body>
-   <div class="container mt-5 mb-5 bg-dark text-white w-50">
-       <div class="row">
-           <div class="col-7 mt-2">
-               <h2>Expense Tracker</h2>
-           </div>
-           <div class="col-5 mt-3 text-right">
-               <p><strong>YOUR BALANCE: <span>{{ balance }}</span></strong></p>
-           </div>
-       </div>
+{% extends 'base.html' %}
 
-       <hr color="white"/>
-       
-       <div class="row">
-           <div class="col-6 text-left"><strong>INCOME:<span id="income"> RS {{ income }}</span></strong></div>
-           <div class="col-6 text-right"><strong>EXPENSE: <span id="exp">RS {{ exp }}</span></strong></div>
-       </div>
+{% block title %}
+    Home - Expense Tracker
+{% endblock %}
+
+
+{% block content %}
+   <div class="container mt-5 mb-5 bg-dark text-white w-50">
+    <div class="pt-2">
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+                <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">This Month</a>
+            
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            
+                <div class="row">
+                    <div class="col-7 mt-2">
+                        <h2>Expense Tracker</h2>
+                    </div>
+                    <div class="col-5 mt-3 text-right">
+                        <p><strong>YOUR BALANCE: RS <span>{{ balance }}</span></strong></p>
+                    </div>
+                </div>
+
+                <hr/>
+            
+                <div class="row">
+                    <div class="col-6 text-left"><strong>INCOME:<span id="income"> RS {{ income }}</span></strong></div>
+                    <div class="col-6 text-right"><strong>EXPENSE: <span id="exp">RS {{ exp }}</span></strong></div>
+                </div>
+            
+            
+            </div>
+
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                 <div class="row">
+                    <div class="col-8 mt-2">
+                        <h2><strong> {{ month}}</strong></h2>
+                    </div>
+                    <div class="col-4 mt-3 text-right">
+                        <strong>YOUR BALANCE: RS <span>{{ monthbal }}</span></strong>
+                        <small class="text-info">Previous Remaining: RS {{remaining }} </small>
+                    </div>
+                </div>
+
+                <hr/>
+            
+                <div class="row">
+                    <div class="col-6 text-left"><strong>INCOME:<span id="income"> RS {{ monthinc }}</span></strong></div>
+                    <div class="col-6 text-right"><strong>EXPENSE: <span id="exp">RS {{ monthexp }}</span></strong></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
        
        <br/>
        
        <div class="row">
-           <div class="col-12 text-left">
-               <h4>History</h4>
-               <hr color="white"/>
+           <div class="col-8 text-left">
+               <h4>Recent History</h4>
+           </div>
+           <div class="col-4 text-right">
+            <a href="{% url 'history' %}" title="view all history"><i class="fa fa-history mr-2" style="font-size:24px;"></i></a>
            </div>
        </div>
-
+        <hr color="white"/>
        <table class="table table-borderless table-dark table-hover table-sm">
         <thead>
           <tr class="table-active">
@@ -57,8 +84,8 @@
           <tr>
             <td> {{ transaction.datepretty }}</td>
             <td>{{ transaction.transaction_name }}</td>
-            <td>{{ transaction.amount }}</td>
-            <div><td class="text-right">{{ transaction.sign }}</td></div>
+            <td class="text-left">{{ transaction.amount }}</td>
+            <div><td class="text-right sign">{{ transaction.sign }}</td></div>
           </tr>
           {% endfor %}
         </tbody>
@@ -103,7 +130,7 @@
                         <br/>
                         <div class="row">
                             <div class="col text-center">
-                                <button class="btn btn-outline-success" href="">Submit</button>
+                                <button class="btn btn-outline-success">Submit</button>
                             </div>
                         </div>
                 </form>
@@ -111,26 +138,5 @@
         </div>
        <br/>
    </div>
-    <!-- JS, Popper.js, and jQuery -->
- <!--including jQuery CDN-->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-<!--cutom js-->
-<script src="{% static 'todo.js' %}"></script>
-</body>
-</html>
 
-
-
-<!--
-     <div class="row no-gutters">
-            <div class=" col-8">
-                <ul>
-                    {% for transaction in expense.all %}
-                        <li><span id="trash"><i class="fa fa-trash"></i></span>{{ transaction.transaction_name }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            
-       </div>
--->
+{% endblock %}

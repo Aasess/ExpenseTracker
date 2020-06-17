@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %}
+  History-Search
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-dark bg-dark">
+        <!-- Navbar content -->
+        <a class="navbar-brand" title="Home page" href="{% url 'home' %}"><i class="fa fa-home ml-2 mt-1" style="font-size:28px;"></i></a>
+        <form class="form-inline" method="GET" action="{% url 'search' %}">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="query" name="query">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+    </nav>
+      <br/>
+      <!--container-->
+      
+      <div class="container text-white">
+        {%if error %}
+        <h2 class="alert alert-danger"><strong> Search Result</strong></h2>
+        <hr color="white"/>
+           <h4 class="alert alert-warning">{{error }} <strong>{{query}}</strong></h4>
+           <p class="text-left ml-2">Check your spelling or try different keywords</p>
+        {% else %}
+        <h2 class="alert alert-success"><strong> Search Results</strong></h2>
+        <hr color="white"/>
+            <table class="table table-borderless table-dark table-hover table-sm">
+            <thead>
+                <tr class="table-active">
+                <th scope="col">Date</th>
+                <th scope="col">Transaction Name</th>
+                <th scope="col" class="text-left"> Amount</th>
+                <th scope="col"></th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in expense %}
+                <tr/>
+                <td><span class="trash"><a href="{% url 'delete' transaction.id %}" title="view all history"><i class="fa fa-trash" title="Delete this transaction"></i></a></span> {{ transaction.datepretty }}</td>
+                <td>{{ transaction.transaction_name }}</td>
+                <td class="text-left">{{ transaction.amount }}</td>
+                <td><a href="{% url 'edit' transaction.id %}" title="Edit this transaction" class="ml-3 mr-4"><i class="fa fa-edit"></i></a></td>
+                <div><td class="text-right sign">{{ transaction.sign }}</td></div>
+                </tr>
+                {% endfor %}
+            </tbody>
+            {% endif %}
+        </table>
+        <div class="text-center">
+            <a href="{% url 'history' %}" class="btn btn-success" title="View all history">History</a>
+        </div>
+      </div>
+{% endblock %}
