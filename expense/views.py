@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect,get_object_or_404
+from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from .models import Expense
 
 # Create your views here.
@@ -41,7 +41,9 @@ def home(request):
 
 
 def history(request):
-    return render(request,'expense\history.html',{"expense":Expense.objects.order_by("-date")})
+    return render(request,'expense\history.html',{
+        "expense":Expense.objects.order_by("-date")
+        })
 
 
 
@@ -72,3 +74,19 @@ def delete(request,transaction_id):
     else:
         return render(request,'expense\delete.html',{"transaction":transaction})
 
+
+
+def search(request):
+    query = request.GET['query']
+    #logic for search
+    expensetrans = Expense.objects.filter(transaction_name__icontains=query)
+    expenseamt = Expense.objects.filter(amount__icontains=query)
+    expensedate = Expense.objects.filter(date__icontains=query)
+    expense = expensetrans.union(expenseamt)
+    expense = expense.union(expensedate)
+    expense = expense.order_by('-date')
+
+    if(len(expense) == 0):
+        return render(request,'expense\search.html',{'error':'There are no results for keywords:','query':query})
+    else:
+        return render(request,'expense\search.html',{'expense':expense})
