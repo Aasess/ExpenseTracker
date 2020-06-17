@@ -16,3 +16,4 @@ class Expense(models.Model):
     def datepretty(self):
         return self.date.strftime('%b %e,%Y')
 
+
