@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    delete - {{ transaction.transaction_name }}
+{% endblock %}
+
+{% block content %}
+
+<div class="container m-3 mx-auto text-white">
+    <h3 class="alert alert-danger"><strong>Delete Transaction</strong></h3>
+    
+    <div class="col-5 mx-auto border border-dark rounded m-3 p-3 text-center bg-dark">
+        <form method="POST" action="{% url 'delete' transaction.id %}">
+            {% csrf_token %}
+            <div class="row mx-auto">
+                <H3>Delete {{transaction.transaction_name }} ?</H3>
+            </div>
+            <hr color="white"/>
+            <div class="row">
+                <div class="col-6">
+                    <input type="submit" class="btn btn-danger" value="Delete"/>     
+                </div>
+                <div class="col-6">
+                    <a href="{% url 'history' %}" class="btn btn-success">Cancel</a>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}

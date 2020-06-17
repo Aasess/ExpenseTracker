@@ -1,17 +1,21 @@
 $(document).ready(function () {
     //for adding line-through  
-    $("tr").on('click','td',function(){
+    $("tr").on('click','td',function(e){
         $(this).parent().toggleClass("listtext");
     });
 
 
-    //when span(delete icon) is pressed delete the list
-    $('.trash').on('click',function(e){
-        $(this).parent().parent().fadeOut(500,function(){
-            $(this).remove();
-        });
-        e.stopPropagation();
-    });
+    // //when span(delete icon) is pressed delete the list
+    // $('.trash').on('click',function(e){
+    //     $(this).parent().parent().fadeOut(500,function(){
+    //         $(this).remove();
+    //     });
+    //     e.stopPropagation();
+    // });
+
+    $('.fa-edit').on('click',function(){
+        $(this).parent().parent().removeClass("listtext");
+    )};
 
 
     //for controlling create new todo
@@ -32,7 +36,7 @@ $(document).ready(function () {
 
 
     //sign coloring manager
-    $("td.text-right").each(function (index,element){
+    $("td.sign").each(function (index,element){
         if($(this).text() == '+')
         {
             $(this).text("");

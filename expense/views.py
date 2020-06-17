@@ -38,8 +38,12 @@ def home(request):
             "balance":balance})
 
 
+
+
 def history(request):
     return render(request,'expense\history.html',{"expense":Expense.objects.order_by("-date")})
+
+
 
 
 def edit(request,transaction_id):
@@ -58,3 +62,13 @@ def edit(request,transaction_id):
 
     else:
         return render(request,'expense\edit.html',{"transaction":transaction })
+
+
+def delete(request,transaction_id):
+    transaction = get_object_or_404(Expense,pk=transaction_id)
+    if(request.method =="POST"):
+        transaction.delete()
+        return redirect('history')
+    else:
+        return render(request,'expense\delete.html',{"transaction":transaction})
+

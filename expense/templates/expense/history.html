@@ -14,6 +14,7 @@
     </nav>
       <br/>
       <!--container-->
+      
       <div class="container text-white">
         <h3><strong>HISTORY</strong></h3>
         <hr color="white"/>
@@ -30,7 +31,7 @@
           <tbody>
               {% for transaction in expense.all %}
             <tr/>
-              <td><span class="trash"><i class="fa fa-trash" title="Delete this transaction"></i></span> {{ transaction.datepretty }}</td>
+              <td><span class="trash"><a href="{% url 'delete' transaction.id %}" title="view all history"><i class="fa fa-trash" title="Delete this transaction"></i></a></span> {{ transaction.datepretty }}</td>
               <td>{{ transaction.transaction_name }}</td>
               <td class="text-left">{{ transaction.amount }}</td>
               <td><a href="{% url 'edit' transaction.id %}" title="Edit this transaction" class="ml-3 mr-4"><i class="fa fa-edit"></i></a></td>

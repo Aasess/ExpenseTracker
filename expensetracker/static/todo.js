@@ -1,17 +1,19 @@
 $(document).ready(function () {
     //for adding line-through  
-    $("tr").on('click','td',function(e){
+    $("tr").on('click','td',function(){
         $(this).parent().toggleClass("listtext");
     });
 
 
-    //when span(delete icon) is pressed delete the list
+     //when span(delete icon) and edit icon is pressed ... don't show the line-through
     $('.trash').on('click',function(e){
-        $(this).parent().parent().fadeOut(500,function(){
-            $(this).remove();
-        });
         e.stopPropagation();
     });
+
+    $('.fa-edit').on('click',function(e){
+        
+        e.stopPropagation();
+    })
 
 
     //for controlling create new todo

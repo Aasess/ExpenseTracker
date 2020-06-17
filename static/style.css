@@ -12,12 +12,18 @@ body{
     width: 0;
     display: inline-block;
     transition: 0.2s linear;
-    opacity:0
+    opacity:0;
+    cursor: pointer;
+}
+
+tbody:hover {
+    cursor:pointer;
 }
 
 tr:hover .trash{
     width:20px;
     opacity: 0.9;
+    cursor: pointer;
 }
 
 .listtext {
@@ -57,6 +63,9 @@ a{
     color: white;
 }
 
-tbody:hover{
+a:hover{
+    color:white;
+}
+.fa-plus{
     cursor: pointer;
 }
