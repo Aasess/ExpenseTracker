@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
 from django.db.models import Q
+<<<<<<< HEAD
 import datetime
+=======
+>>>>>>> 19231b95c67ad1f9beb79c576199e4b86e033015
 from .models import Expense
 
 # Create your views here.
@@ -62,12 +65,16 @@ def home(request):
             "expense":Expense.objects.order_by("-date")[:6],
             "income":sumincome,
             "exp":sumexpense,
+<<<<<<< HEAD
             "balance":balance,
             "monthbal":balancemonth,
             "monthinc":sumincomemonth,
             "monthexp":sumexpensemonth,
             "month":mnth,
             "remaining":remaining})
+=======
+            "balance":balance})
+>>>>>>> 19231b95c67ad1f9beb79c576199e4b86e033015
 
 
 

@@ -17,6 +17,10 @@ class Expense(models.Model):
         return self.date.strftime('%b %e,%Y')
 
     def month(self):
+<<<<<<< HEAD
         return self.date.strftime('%m')
+=======
+        return self.date.strftime('%b')
+>>>>>>> 19231b95c67ad1f9beb79c576199e4b86e033015
 
 
