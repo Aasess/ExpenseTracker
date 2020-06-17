@@ -16,12 +16,14 @@
       <!--container-->
       
       <div class="container text-white">
-        <h2 class="alert alert-success"><strong> Search Results</strong></h2>
-        <hr color="white"/>
         {%if error %}
+        <h2 class="alert alert-danger"><strong> Search Result</strong></h2>
+        <hr color="white"/>
            <h4 class="alert alert-warning">{{error }} <strong>{{query}}</strong></h4>
            <p class="text-left ml-2">Check your spelling or try different keywords</p>
         {% else %}
+        <h2 class="alert alert-success"><strong> Search Results</strong></h2>
+        <hr color="white"/>
             <table class="table table-borderless table-dark table-hover table-sm">
             <thead>
                 <tr class="table-active">
@@ -45,5 +47,8 @@
             </tbody>
             {% endif %}
         </table>
+        <div class="text-center">
+            <a href="{% url 'history' %}" class="btn btn-success" title="View all history">History</a>
+        </div>
       </div>
 {% endblock %}

@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect,get_object_or_404,HttpResponse
+from django.db.models import Q
 from .models import Expense
 
 # Create your views here.
@@ -79,13 +80,9 @@ def delete(request,transaction_id):
 def search(request):
     query = request.GET['query']
     #logic for search
-    expensetrans = Expense.objects.filter(transaction_name__icontains=query)
-    expenseamt = Expense.objects.filter(amount__icontains=query)
-    expensedate = Expense.objects.filter(date__icontains=query)
-    expense = expensetrans.union(expenseamt)
-    expense = expense.union(expensedate)
-    expense = expense.order_by('-date')
-
+    expense = Expense.objects.filter(
+        Q(transaction_name__icontains=query) |Q(amount__icontains=query)
+    ).order_by('-date')
     if(len(expense) == 0):
         return render(request,'expense\search.html',{'error':'There are no results for keywords:','query':query})
     else:
