@@ -112,8 +112,7 @@ def search(request):
     query = request.GET['query']
     #logic for search
     expense = Expense.objects.filter(
-        Q(transaction_name__icontains=query) |Q(amount__icontains=query)
-    ).order_by('-date')
+        Q(transaction_name__icontains=query) | Q(amount__icontains=query)).order_by('-date')
     if(len(expense) == 0):
         return render(request,'expense\search.html',{'error':'There are no results for keywords:','query':query})
     else:
