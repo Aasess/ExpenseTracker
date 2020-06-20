@@ -12,7 +12,10 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <!--custom css-->
      <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--bookehcss-->
+     <link href="http://cdn.pydata.org/bokeh/release/bokeh-2.1.0.min.css" rel="stylesheet" type="text/css">
+     <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.1.0.min.css" rel="stylesheet" type="text/css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
 
@@ -21,7 +24,6 @@
 </head>
 <body>
     {% block content %}
-
     {% endblock %}
      <!--jquery-->
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
@@ -29,5 +31,11 @@
      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
      <!--cutom js-->
      <script src="{% static 'todo.js' %}"></script>
+     <!--jsbokeh-->
+     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.1.0.min.js"></script>
+     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.1.0.min.js"></script>
+     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.1.0.min.js"></script>
+     <script src="https://cdn.bokeh.org/bokeh/release/bokeh-api-2.1.0.min.js"></script>
+     {{ script|safe }}
 </body>
 </html>
