@@ -31,3 +31,10 @@ python manage.py migrate</pre>
 
 
 # Demo
+from starting to edit transaction
+
+<img src="Demo/Hnet-image.gif">
+
+from delete transaction to prediction report
+
+<img src="Demo/2.gif">
