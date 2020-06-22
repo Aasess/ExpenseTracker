@@ -26,7 +26,7 @@ python manage.py migrate</pre>
 <li>Edit transaction</li>
 <li>Delete transaction</li>
 <li>Read transaction</li>
-<li>View graphical representation of current month income and expense</li>
+<li>View graphical representation of current month income and expense using Bokeh</li>
 <li>Prediction of next 10 days balance(income-expense) using LinearRegression</li>
 
 
