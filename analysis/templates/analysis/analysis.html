@@ -5,8 +5,49 @@
 {% endblock %}
 
 {% block content %}
-   <h1>Bokeh Graph <h1>
-   {{div|safe}}
+<nav class="navbar navbar-dark bg-dark">
+        <!-- Navbar content -->
+        <a class="navbar-brand" title="Home page" href="{% url 'home' %}"><i class="fa fa-home ml-2 mt-1" style="font-size:28px;"></i></a>
+          
+</nav>
+      <br/>
+<div class="container text-white">
+   <h3><strong>GRAPH AND ANALYSIS</strong><h3>
+   <hr color="white"/>
+   <small><i>This graph shows income and expense in <strong>{{month}}</strong></i> </small>
+   <div class=" mt-2 mb-2">
+        {{div1|safe}}
+    </div>
+    <br/>
+    <hr color="white"/>
+    <i><small>Prediction for Remaining Balance in Next 10 days</small></i>
+    <div class="row">
+        <div class="col-7 mt-2 mb-2">
+        {{div2|safe}}
+        </div>
 
+        <div class="col-4 mt-5 mx-auto">
+            <small>
+            <table class="table table-borderless table-dark table-hover table-sm">
+                <thead class="small">
+                    <tr class="table-active">
+                        <th scope="col">Date</th>
+                        <th scope="col" class="text-center">Predicted Balance</th>
+                    </tr>
+                </thead>
+                <tbody class="small">
+                    {%for predictdate,predictscore in predict%}
+                    <tr>
+                        <td>{{ predictdate }}</td>
+                        <td class="text-center">{{ predictscore }}</td>
+                    </tr>
+                    {% endfor %}
+            
+                 </tbody>
+            </table>
+            </small>
+        </div>
+    </div>
+</div>
   
 {%endblock%}

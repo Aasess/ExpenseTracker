@@ -30,7 +30,7 @@
           </thead>
           <tbody>
               {% for transaction in expense.all %}
-            <tr/>
+            <tr>
               <td><span class="trash"><a href="{% url 'delete' transaction.id %}" title="view all history"><i class="fa fa-trash" title="Delete this transaction"></i></a></span> {{ transaction.datepretty }}</td>
               <td>{{ transaction.transaction_name }}</td>
               <td class="text-left">{{ transaction.amount }}</td>
