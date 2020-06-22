@@ -39,35 +39,34 @@ def analysis(request):
     #now I don't need time so remove time from date
     df['date'] = pd.to_datetime(df['date']).dt.date
     df['date'] = pd.to_datetime(df['date'])
-    df['y'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+    df['datestr'] = df['date'].apply(lambda x: x.strftime('%Y-%m-%d'))
+    
+    #for months only logic
     dfmonth = df[df['date'] >= datetime.datetime.today().replace(day=1)]
 
-    thismonth = print(datetime.date.today().month)
     source = ColumnDataSource(dfmonth)
     #setup graph plot for displaying
     plot = figure(
         title = 'Line Graph',
-
         x_axis_type='datetime',
-    
         x_axis_label = "date",
         y_axis_label = "income",
         plot_width = 800,
         plot_height = 500,
     )
-    print(dfmonth)
+    
     plot.line(x='date',y = 'amount',line_width=1,legend_label="daily basis",source=source,line_dash ="dashed")
     plot.circle(x='date',y='amount',fill_color='white',size=8,legend_label="daily basis",source=source)
     plot.xaxis.formatter=DatetimeTickFormatter(days="%Y/%m/%d")
     
     plot.add_tools(HoverTool(tooltips=[
-        ("date","@y"),
+        ("date","@datestr"),
         ('transaction_name',"@transaction_name"),
         ("amount",'@amount')]))
     #store components
     script,div = components(plot)
 
-    #trans
+    #render to analysis.html
     return render(request,'analysis/analysis.html',{
         'script':script,
         'div':div
