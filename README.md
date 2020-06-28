@@ -11,14 +11,17 @@
 4.Install packages from requirements.txt file
 <pre>pip install -r /path/to/requirements.txt</pre>
 
-5.Run migrations as:
+5.Change your TimeZone from settings.py(updated)
+MyTimeZone: <pre>TIME_ZONE = 'Asia/Kathmandu'</pre>
+
+6.Run migrations as:
 <pre>python manage.py makemigrations
 python manage.py migrate</pre>
 
-6.Start the development:
+7.Start the development:
 <pre>python manage.py runserver</pre>
 
-7.visit http://127.0.0.1:8000/
+8.visit http://127.0.0.1:8000/
 
 
 # features
@@ -38,3 +41,7 @@ from starting to edit transaction
 from delete transaction to prediction report
 
 <img src="Demo/2.gif">
+
+
+# for analysis
+There is a notebook dir which contain ipynb file for actual LinearRegression model that is implemented in Django.
