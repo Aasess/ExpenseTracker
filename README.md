@@ -12,7 +12,8 @@
 <pre>pip install -r /path/to/requirements.txt</pre>
 
 5.Change your TimeZone from settings.py(updated)
-MyTimeZone: <pre>TIME_ZONE = 'Asia/Kathmandu'</pre>
+
+MyTimeZone is: <pre>TIME_ZONE = 'Asia/Kathmandu'</pre>
 
 6.Run migrations as:
 <pre>python manage.py makemigrations
