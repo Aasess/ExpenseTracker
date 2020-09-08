@@ -46,3 +46,7 @@ from delete transaction to prediction report
 
 # for analysis
 There is a notebook dir which contain ipynb file for actual LinearRegression model that is implemented in Django.
+
+# Disclaimer
+This project is developed for demo purpose and it is not supposed to be used in real application
+
